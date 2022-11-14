@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->date('fecha_eliminacion');
             $table->date('fecha_actualizacion');
+            $table->softDeletes();
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

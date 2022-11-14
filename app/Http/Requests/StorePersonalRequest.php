@@ -13,7 +13,7 @@ class StorePersonalRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,8 @@ class StorePersonalRequest extends FormRequest
     {
         return [
             //
+            'pnombre'=> 'required'
+
         ];
     }
 }

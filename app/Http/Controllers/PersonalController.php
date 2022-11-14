@@ -31,6 +31,7 @@ class PersonalController extends Controller
     public function create()
     {
         //
+    
         return view('admin.personals.create');
 
     }
@@ -44,6 +45,20 @@ class PersonalController extends Controller
     public function store(StorePersonalRequest $request)
     {
         //
+        $personal = new Personal;
+        $personal->primer_nombre = $request->pnombre;
+        $personal->segundo_nombre = $request->snombre;
+        $personal->primer_apellido = $request->papellido;
+        $personal->segundo_apellido = $request->sapellido;
+        $personal->ci = $request->ci;
+        $personal->extension = $request->extension;
+        $personal->complemento = $request->complemento;
+        $personal->direccion = $request->direccion;
+        $personal->fecha_eliminacion = $request->feliminacion;
+        $personal->fecha_actualizacion = $request->factualizacion;
+        $personal->usuario_id = $request->usuario;
+        $personal->save();
+        return redirect('personal');
     }
 
     /**
@@ -55,6 +70,8 @@ class PersonalController extends Controller
     public function show(Personal $personal)
     {
         //
+        
+
     }
 
     /**
@@ -65,7 +82,8 @@ class PersonalController extends Controller
      */
     public function edit(Personal $personal)
     {
-        //
+        //envia todo la informacion al fprmulario EDIT
+        return view('admin.personals.edit', compact('personal'));   
     }
 
     /**
@@ -78,6 +96,13 @@ class PersonalController extends Controller
     public function update(UpdatePersonalRequest $request, Personal $personal)
     {
         //
+
+        //  dd($request);  
+        $validated = $request->validated();
+        $personal->update($request->all());
+
+        return redirect('/personal');
+
     }
 
     /**
@@ -89,5 +114,7 @@ class PersonalController extends Controller
     public function destroy(Personal $personal)
     {
         //
+        $personal->delete();
+        return redirect('personal')->with('eliminar','ok');
     }
 }
