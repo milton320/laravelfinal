@@ -20,8 +20,6 @@ class Personal extends Model
         'extension',
         'complemento',
         'direccion',
-        'fecha_eliminacion',
-        'fecha_actualizacion',
         'usuario_id',
         
     ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Externos;
 use App\Http\Requests\StoreExternosRequest;
 use App\Http\Requests\UpdateExternosRequest;
+use App\Models\Personal;
 
 class ExternosController extends Controller
 {
@@ -15,9 +16,17 @@ class ExternosController extends Controller
      */
     public function index()
     {
-        //
+        //para mostrarla tabla
+        $externos = Externos::all();
+        return view('admin.externo.index', compact('externos'));
     }
 
+    public function PersonalCombox()
+    {
+        $personal = Personal::all();
+        return view('admin.externo.create', compact('personal'));
+        
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -26,6 +35,9 @@ class ExternosController extends Controller
     public function create()
     {
         //
+        $personal = Personal::all();
+        return view('admin.externo.create', compact('personal'));
+
     }
 
     /**
@@ -37,6 +49,23 @@ class ExternosController extends Controller
     public function store(StoreExternosRequest $request)
     {
         //
+        
+        $externos = new Externos();
+        $externos->titulo = $request->titulo;
+        $externos->institucion_remitente = $request->institucion_remitente;
+        $externos->persona_firmante = $request->persona_firmante;
+        $externos->asunto = $request->asunto;
+        $externos->fecha_documento = $request->fecha_documento;
+        $externos->tipo_documento = $request->tipo_documento;
+        $externos->cite = $request->cite;
+        $externos->via = $request->via;
+        $externos->responsable = $request->responsable;
+        $externos->deriva = $request->deriva;
+        $externos->fecha_ingreso = $request->fecha_ingreso;
+        $externos->personal_id = $request->personal_id;
+        $externos->save();
+        return redirect('externo');
+
     }
 
     /**
@@ -83,4 +112,6 @@ class ExternosController extends Controller
     {
         //
     }
+   
+
 }

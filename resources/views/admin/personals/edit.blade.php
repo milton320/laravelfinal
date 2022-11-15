@@ -60,14 +60,6 @@
                 <input type="text" class="form-control" id="direccion" name="direccion" value="{{ $personal->direccion }}" aria-descr>
             </div>
             <div class="mb-3">
-                <label for="fecha_eliminacion" class="form-label">fecha</label>
-                <input type="date" class="form-control" id="fecha_eliminacion" value="{{ $personal->fecha_eliminacion }}" name="fecha_eliminacion" aria-descr>
-            </div>
-            <div class="mb-3">
-                <label for="fecha_actualizacion" class="form-label">fecha</label>
-                <input type="date" class="form-control" id="fecha_actualizacion" value="{{ $personal->fecha_actualizacion }}" name="fecha_actualizacion" aria-descr>
-            </div>
-            <div class="mb-3">
                 <label for="usuario" class="form-label">usuario</label>
                 <input type="text" class="form-control" id="usuario" value="{{ $personal->usuario_id }}" name="usuario_id" aria-descr>
             </div>

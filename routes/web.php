@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExternosController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\UserController;
 use Faker\Provider\Person;
@@ -32,3 +33,7 @@ Route::resource('/usuarios',UserController::class);
 
 //RUTA DE PERSONAL
 Route::resource('/personal', PersonalController::class);
+
+//RUTA DE EXTEERNOS
+Route::resource('/externo', ExternosController::class);
+//  Route::get('/externo', [ExternosController::class, 'PersonalCombox']);

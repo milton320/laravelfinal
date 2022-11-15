@@ -5,10 +5,16 @@
 @section('content_header')
     <div class="card">
         <div class="card-body">
-            <strong>Personal <h4>Bienvenido . {{ auth()->user()->id }} </h4></strong>
-            <a href="{{ route('personal.create') }}" class="btn btn-outline-success float-right">
-                Nuevo Personal
+            <strong>Correspondecia Externa <h4>Bienvenido . {{ auth()->user()->name }} </h4></strong>
+            <a href="{{ route('externo.create') }}" class="btn btn-outline-success float-right">
+                Nuevo Correspondecia Externa
             </a>
+            @if(auth()->user()->name =='admin')
+                <h1>{{auth()->user()->name}}</h1>
+            @else
+                <h1>no es el usuario </h1>
+            @endif
+
         </div>
     </div>
 
@@ -17,37 +23,54 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <table class="table table-striped" id="personal">
+            <table class="table table-striped" id="externo">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">NOMBRE</th>
-                    <th scope="col">APELLIDOS</th>
-                    <th scope="col">CI</th>
-                    <th scope="col">DIRECCION</th>
+                    <th scope="col">titulo</th>
+                    <th scope="col">institucion_remitente</th>
+                    <th scope="col">persona_firmante</th>
+                    <th scope="col">asunto</th>
+                    <th scope="col">fecha_documento</th>
+                    <th scope="col">tipo_documento</th>
+                    <th scope="col">cite</th>
+                    <th scope="col">via</th>
+                    <th scope="col">responsable</th>
+                    <th scope="col">deriva</th>
+                    <th scope="col">fecha ingreso</th>
+                    @if(auth()->user()->name =='admin')
                     <th scope="col">ACCIONES</th>
+                    @endif
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($personal as $item)
+                    @foreach($externos as $item)
                     <tr>
-                        <th scope="row">{{ $item->id }}</th>
-                        <td>{{ $item->primer_nombre }} {{ $item->segundo_nombre }}</td>
-                        <td>{{ $item->primer_apellido }} {{ $item->segundo_apellido }}</td>
-                        <td>{{ $item->ci }}</td>
-                        <td>{{ $item->direccion }}</td>
+                        <th scope="row"></th>
+                        <td>{{ $item->titulo }}</td>
+                        <td>{{ $item->institucion_remitente }}</td>
+                        <td>{{ $item->persona_firmante }}</td>
+                        <td>{{ $item->asunto }}</td>
+                        <td>{{ $item->fecha_documento }}</td>
+                        <td>{{ $item->tipo_documento }}</td>
+                        <td>{{ $item->cite }}</td>
+                        <td>{{ $item->via }}</td>
+                        <td>{{ $item->responsable }}</td>
+                        <td>{{ $item->deriva }}</td>
+                        <td>{{ $item->fecha_ingreso }}</td>
+                        @if(auth()->user()->name =='admin')
                         <td>
-                            <a href="{{ route('personal.edit', $item) }}" class="btn btn-outline-primary">
+                            <a href="" class="btn btn-outline-primary">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <form action="{{ route('personal.destroy', $item) }}" method="POST" class="form-eliminar">
-                                @csrf
-                                @method('DELETE')
+                            <form action="" method="POST" class="form-eliminar">
+                                
                                 <button class="btn btn-outline-danger">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </form>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
@@ -102,7 +125,7 @@
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap4.min.js"></script><script>
-            $('#personal').DataTable({
+            $('#externo').DataTable({
             responsive: true,
             autowidth: false,
             "language": {

@@ -54,8 +54,6 @@ class PersonalController extends Controller
         $personal->extension = $request->extension;
         $personal->complemento = $request->complemento;
         $personal->direccion = $request->direccion;
-        $personal->fecha_eliminacion = $request->feliminacion;
-        $personal->fecha_actualizacion = $request->factualizacion;
         $personal->usuario_id = $request->usuario;
         $personal->save();
         return redirect('personal');
@@ -117,4 +115,13 @@ class PersonalController extends Controller
         $personal->delete();
         return redirect('personal')->with('eliminar','ok');
     }
+
+    public function PersonalCombox()
+    {
+        $personal = Personal::all();
+
+        dd($personal);
+        return view('admin.externo.create', compact('personal'));
+    }
+
 }

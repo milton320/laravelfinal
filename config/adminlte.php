@@ -336,7 +336,7 @@ return [
         ],
         [
             'text'        => 'Externos',
-            'url'         => 'admin/pages',
+            'url'         => 'externo',
             'icon'        => 'fas fa-envelope',
             'label_color' => 'success',
         ],

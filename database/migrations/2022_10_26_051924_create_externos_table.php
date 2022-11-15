@@ -26,8 +26,6 @@ return new class extends Migration
             $table->string('responsable');
             $table->string('deriva');
             $table->date('fecha_ingreso');
-            $table->date('fecha_eliminacion');
-            $table->date('fecha_actualizacion');
             $table->unsignedBigInteger('personal_id');
             $table->foreign('personal_id')->references('id')->on('personals')->onDelete('cascade');
             $table->timestamps();

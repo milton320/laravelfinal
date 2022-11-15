@@ -57,17 +57,10 @@
                 <label for="direccion" class="form-label">direccion</label>
                 <input type="text" class="form-control" id="direccion" name="direccion" aria-descr>
             </div>
-            <div class="mb-3">
-                <label for="fecha_eliminacion" class="form-label">fecha</label>
-                <input type="date" class="form-control" id="fecha_eliminacion" name="feliminacion" aria-descr>
-            </div>
-            <div class="mb-3">
-                <label for="fecha_actualizacion" class="form-label">fecha</label>
-                <input type="date" class="form-control" id="fecha_actualizacion" name="factualizacion" aria-descr>
-            </div>
+        
             <div class="mb-3">
                 <label for="usuario" class="form-label">usuario</label>
-                <input type="text" class="form-control" id="usuario" name="usuario" aria-descr>
+                <input type="text" class="form-control" id="usuario" name="usuario" value="{{ auth()->user()->id }}" aria-descr hidden>
             </div>
             <br>
             
