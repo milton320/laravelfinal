@@ -5,7 +5,7 @@
 @section('content_header')
     <div class="card">
         <div class="card-body">
-            <strong>Correspondecia Externa <h4>Bienvenido . {{ auth()->user()->name }} </h4></strong>
+            <strong>Correspondecia Externa <h4>Bienvenido {{ auth()->user()->name }} </h4></strong>
             <a href="{{ route('externo.create') }}" class="btn btn-outline-success float-right">
                 Nuevo Correspondecia Externa
             </a>
@@ -26,7 +26,6 @@
             <table class="table table-striped" id="externo">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
                     <th scope="col">titulo</th>
                     <th scope="col">institucion_remitente</th>
                     <th scope="col">persona_firmante</th>
@@ -46,7 +45,6 @@
                 <tbody>
                     @foreach($externos as $item)
                     <tr>
-                        <th scope="row"></th>
                         <td>{{ $item->titulo }}</td>
                         <td>{{ $item->institucion_remitente }}</td>
                         <td>{{ $item->persona_firmante }}</td>
@@ -60,7 +58,7 @@
                         <td>{{ $item->fecha_ingreso }}</td>
                         @if(auth()->user()->name =='admin')
                         <td>
-                            <a href="" class="btn btn-outline-primary">
+                            <a href="{{ route('personal.edit', $item) }}" class="btn btn-outline-primary">
                                 <i class="fas fa-edit"></i>
                             </a>
                             <form action="" method="POST" class="form-eliminar">
